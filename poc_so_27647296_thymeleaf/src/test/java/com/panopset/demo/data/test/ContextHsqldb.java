@@ -18,7 +18,12 @@ import com.panopset.demo.dao.StoreDAOImpl;
 @Configuration
 public class ContextHsqldb {
 
-
+	@Bean
+	public StoreDAO storeDAO() {
+		StoreDAOImpl sdi = new StoreDAOImpl();
+		sdi.setSessionFactory(sessionFactory().getObject());
+		return sdi;
+	}
 
 	@Bean
 	public DataSource dataSource() {
