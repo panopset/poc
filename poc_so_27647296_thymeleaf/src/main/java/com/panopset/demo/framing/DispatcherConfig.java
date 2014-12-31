@@ -94,6 +94,13 @@ public class DispatcherConfig extends WebMvcConfigurerAdapter {
 	  TYPE VARCHAR (64) NOT NULL,
 	  ADDRESS VARCHAR (256) NOT NULL
 	 );
+	 
+	 INSERT INTO practick.STORE (NAME, TYPE, ADDRESS) 
+	 values('StoreA','Retail','100 Northpoint');
+	 
+	 INSERT INTO practick.STORE (NAME, TYPE, ADDRESS)
+	 values('StoreB','Warehouse','90 Blue Ravine');
+	 
 	 * </pre>
 	 * 
 	 * @return Data source for practick table.

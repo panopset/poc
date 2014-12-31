@@ -149,6 +149,6 @@
  <modules>
   <module>poc_aop</module>
   <module>poc_spring_hib</module>
-  <!-- <module>poc_so_25288716</module> <module>poc_so_27647296_thymeleaf</module> -->
+  <module>poc_so_27647296_thymeleaf</module>
  </modules>
 </project>
