@@ -16,10 +16,10 @@ import com.panopset.demo.dao.StoreDAO;
 @Controller
 @RequestMapping("/")
 public class HomeController {
-	
+
 	@Autowired
 	StoreDAO storeDAO;
-	
+
 	/**
 	 * Handle http request.
 	 *
@@ -29,7 +29,7 @@ public class HomeController {
 	 *            Request.
 	 * @return index.
 	 */
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public String handleRequest(Model model, HttpServletRequest request) {
 		model.addAttribute("serverInfo", request.getSession()
 				.getServletContext().getServerInfo());

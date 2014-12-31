@@ -1,7 +1,5 @@
 package com.panopset.demo.dao;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -37,16 +35,20 @@ public class StoreDAOImpl extends HibernateDaoSupport implements StoreDAO {
 	@Override
 	@SuppressWarnings("unchecked")
 	public Store getStore(String storeName) {
-		List<Store> r = getHibernateTemplate().execute(new HibernateCallback<List<Store>>() {
-	        public List<Store> doInHibernate(Session session) throws HibernateException {
-	            Query q = session.createQuery("from Store where name = :name");
-	            q.setParameter("name", storeName);
-	            q.setMaxResults(1);
-	            return q.list();
-	        }
-	    });
-//		Collection<Store> r = (Collection<Store>) getHibernateTemplate().find(
-//				"from Store where name = :name", storeName);
+		List<Store> r = getHibernateTemplate().execute(
+				new HibernateCallback<List<Store>>() {
+					public List<Store> doInHibernate(Session session)
+							throws HibernateException {
+						Query q = session
+								.createQuery("from Store where name = :name");
+						q.setParameter("name", storeName);
+						q.setMaxResults(1);
+						return q.list();
+					}
+				});
+		// Collection<Store> r = (Collection<Store>)
+		// getHibernateTemplate().find(
+		// "from Store where name = :name", storeName);
 		if (r == null || r.isEmpty()) {
 			return null;
 		}
@@ -57,19 +59,22 @@ public class StoreDAOImpl extends HibernateDaoSupport implements StoreDAO {
 	}
 
 	/**
-	 *  <a href="http://stackoverflow.com/questions/8130964/with-springs-gethibernatetemplate-how-can-i-get-a-list-of-users-and-limit-the-r">
-	 *  Reference</a>.
+	 * <a href=
+	 * "http://stackoverflow.com/questions/8130964/with-springs-gethibernatetemplate-how-can-i-get-a-list-of-users-and-limit-the-r"
+	 * > Reference</a>.
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Store> getAllStores() {
-	    return getHibernateTemplate().execute(new HibernateCallback<List<Store>>() {
-	        public List<Store> doInHibernate(Session session) throws HibernateException {
-	            Query q = session.createQuery("from Store");
-	            q.setMaxResults(100);
-	            return q.list();
-	        }
-	    });
+		return getHibernateTemplate().execute(
+				new HibernateCallback<List<Store>>() {
+					public List<Store> doInHibernate(Session session)
+							throws HibernateException {
+						Query q = session.createQuery("from Store");
+						q.setMaxResults(100);
+						return q.list();
+					}
+				});
 	}
 
 }

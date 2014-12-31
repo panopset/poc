@@ -53,9 +53,9 @@ public class StoreAccessTest extends
 
 		storeDAO.insertStore(store);
 
-        for (Store storeFromList : storeDAO.getAllStores()) {
-        	System.out.println(storeFromList.toString());
-        }
+		for (Store storeFromList : storeDAO.getAllStores()) {
+			System.out.println(storeFromList.toString());
+		}
 		store = storeDAO.getStore("StoreA");
 
 		Assert.assertEquals("Retail", store.getType());

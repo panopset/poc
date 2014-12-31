@@ -45,7 +45,8 @@ public class ContextHsqldb {
 				"org.hibernate.dialect.HSQLDialect");
 		lsfb.getHibernateProperties().setProperty("hibernate.format_sql",
 				"true");
-		lsfb.setPackagesToScan("com.panopset.demo.bean","com.panopset.demo.dao");
+		lsfb.setPackagesToScan("com.panopset.demo.bean",
+				"com.panopset.demo.dao");
 		return lsfb;
 	}
 

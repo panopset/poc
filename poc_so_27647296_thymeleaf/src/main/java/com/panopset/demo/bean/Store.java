@@ -11,7 +11,6 @@ import javax.persistence.Table;
 @Table(name = "STORE")
 public class Store {
 
-
 	private int id;
 
 	private String name;
@@ -19,7 +18,7 @@ public class Store {
 	private String type;
 
 	private String address;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID", nullable = false)
