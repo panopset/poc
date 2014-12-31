@@ -9,8 +9,17 @@
  <url>http://panopset.com</url>
  <scm>
   <connection>scm:git:https://github.com/panopset/poc.git</connection>
-  <!-- .ssh/config entry (Use the git user for github ssh access https://help.github.com/articles/error-permission-denied-publickey/#always-use-the-git-user 
-   ): Host github Hostname github.com User git IdentityFile ~/.ssh/id_rsa -->
+  <!-- .ssh/config entry 
+  (Use the git user for github ssh access 
+  https://help.github.com/articles/error-permission-denied-publickey/#always-use-the-git-user 
+   ): 
+   
+Host github 
+Hostname github.com 
+User git 
+IdentityFile ~/.ssh/id_rsa 
+
+-->
   <developerConnection>scm:git:github:panopset/poc.git</developerConnection>
   <url>https://github.com/panopset/poc</url>
   <tag>HEAD</tag>

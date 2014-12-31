@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,10 +36,15 @@ public class HomeController {
 		model.addAttribute("serverInfo", request.getSession()
 				.getServletContext().getServerInfo());
 		List<Store> stores = storeDAO.getAllStores();
-		for (Store s : stores) {
-			System.out.println(s.toString());
+		if (logger.isDebugEnabled()) {
+			for (Store s : stores) {
+				logger.debug(s.toString());
+			}
 		}
 		model.addAttribute("storeList", stores);
 		return "index";
 	}
+	
+	private final Logger logger = LoggerFactory.getILoggerFactory()
+			.getLogger(this.getClass().getName());
 }
