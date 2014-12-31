@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <p>This is the stores!</p>
+    
+<table>
+ <tr th:each="store : ${storeList}">
+     <td th:text="${store.name}">store.name</td> 
+     <td th:text="${store.type}">store.type</td> 
+     <td th:text="${store.address}">store.address</td> 
+ </tr>   
+</table>
+
+<p>
+... in an attempt to answer this 
+<a href="http://stackoverflow.com/questions/27647296/spring-mvc-integration-thymeleaf">
+question.
+</a>
+</p>
+</body>
+</html>

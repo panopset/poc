@@ -1,4 +1,4 @@
 poc
 ===
 
-Proof of concepts, mostly working with stackoverflow questions.
+Proof of concepts, stackoverflow questions.
