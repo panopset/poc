@@ -29,14 +29,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 /**
  * Annotation configured person bean.
  * 
  * @author David Winterfeldt
  */
 @Entity
-@Table(name="PERSON")
+@Table(name = "PERSON")
 public class Person {
 
     private Integer id = null;
@@ -44,12 +43,12 @@ public class Person {
     private String lastName = null;
     private Set<Address> addresses = null;
     private Date created = null;
-    
+
     /**
      * Gets id (primary key).
      */
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -60,11 +59,11 @@ public class Person {
     public void setId(Integer id) {
         this.id = id;
     }
-    
+
     /**
      * Gets first name.
      */
-    @Column(name="FIRST_NAME")
+    @Column(name = "FIRST_NAME")
     public String getFirstName() {
         return firstName;
     }
@@ -75,15 +74,15 @@ public class Person {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-    
+
     /**
      * Gets last name.
      */
-    @Column(name="LAST_NAME")
+    @Column(name = "LAST_NAME")
     public String getLastName() {
         return lastName;
     }
-    
+
     /**
      * Sets last name.
      */
@@ -94,116 +93,116 @@ public class Person {
     /**
      * Gets list of <code>Address</code>es.
      */
-    @OneToMany(fetch=FetchType.EAGER)
-    @JoinColumn(name="PERSON_ID", nullable=false)
-	public Set<Address> getAddresses() {
-		return addresses;
-	}
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "PERSON_ID", nullable = false)
+    public Set<Address> getAddresses() {
+        return addresses;
+    }
 
     /**
      * Sets list of <code>Address</code>es.
      */
-	public void setAddresses(Set<Address> addresses) {
-		this.addresses = addresses;
-	}
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
+    }
 
     /**
      * Gets date created.
      */
-	public Date getCreated() {
-		return created;
-	}
+    public Date getCreated() {
+        return created;
+    }
 
     /**
      * Sets date created.
      */
-	public void setCreated(Date created) {
-		this.created = created;
-	}
-	
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
     /**
-     * Returns a string representation of the object. 
+     * Returns a string representation of the object.
      */
-	@Override
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        
+
         sb.append(this.getClass().getName() + "-");
         sb.append("  id=" + id);
         sb.append("  firstName=" + firstName);
         sb.append("  lastName=" + lastName);
-        
+
         sb.append("  addresses=[");
-        
+
         if (addresses != null) {
-        	for (Address address : addresses) {
-        		sb.append(address.toString());
-        	}
+            for (Address address : addresses) {
+                sb.append(address.toString());
+            }
         }
-        
+
         sb.append("]");
-        
+
         sb.append("  created=" + created);
-        
+
         return sb.toString();
     }
 
     /**
      * Returns a hash code value for the object.
      */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((addresses == null) ? 0 : addresses.hashCode());
-		result = prime * result + ((created == null) ? 0 : created.hashCode());
-		result = prime * result
-				+ ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result
-				+ ((lastName == null) ? 0 : lastName.hashCode());
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result
+                + ((addresses == null) ? 0 : addresses.hashCode());
+        result = prime * result + ((created == null) ? 0 : created.hashCode());
+        result = prime * result
+                + ((firstName == null) ? 0 : firstName.hashCode());
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result
+                + ((lastName == null) ? 0 : lastName.hashCode());
+        return result;
+    }
 
-	/**
-	 * Indicates whether some other object is equal to this one.
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		final Person other = (Person) obj;
-		if (addresses == null) {
-			if (other.addresses != null)
-				return false;
-		} else if (!addresses.equals(other.addresses))
-			return false;
-		if (created == null) {
-			if (other.created != null)
-				return false;
-		} else if (!created.equals(other.created))
-			return false;
-		if (firstName == null) {
-			if (other.firstName != null)
-				return false;
-		} else if (!firstName.equals(other.firstName))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (lastName == null) {
-			if (other.lastName != null)
-				return false;
-		} else if (!lastName.equals(other.lastName))
-			return false;
-		return true;
-	}
+    /**
+     * Indicates whether some other object is equal to this one.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        final Person other = (Person) obj;
+        if (addresses == null) {
+            if (other.addresses != null)
+                return false;
+        } else if (!addresses.equals(other.addresses))
+            return false;
+        if (created == null) {
+            if (other.created != null)
+                return false;
+        } else if (!created.equals(other.created))
+            return false;
+        if (firstName == null) {
+            if (other.firstName != null)
+                return false;
+        } else if (!firstName.equals(other.firstName))
+            return false;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        if (lastName == null) {
+            if (other.lastName != null)
+                return false;
+        } else if (!lastName.equals(other.lastName))
+            return false;
+        return true;
+    }
 
 }

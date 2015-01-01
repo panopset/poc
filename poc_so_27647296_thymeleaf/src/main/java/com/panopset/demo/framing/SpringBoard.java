@@ -10,21 +10,21 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  *
  */
 public class SpringBoard extends
-		AbstractAnnotationConfigDispatcherServletInitializer {
+        AbstractAnnotationConfigDispatcherServletInitializer {
 
-	@Override
-	protected Class<?>[] getRootConfigClasses() {
-		return new Class<?>[] { DispatcherConfig.class };
-	}
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class<?>[] { DispatcherConfig.class };
+    }
 
-	@Override
-	protected Class<?>[] getServletConfigClasses() {
-		return new Class[] { HomeController.class };
-	}
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class[] { HomeController.class };
+    }
 
-	@Override
-	protected String[] getServletMappings() {
-		return new String[] { "/" };
-	}
+    @Override
+    protected String[] getServletMappings() {
+        return new String[] { "/" };
+    }
 
 }

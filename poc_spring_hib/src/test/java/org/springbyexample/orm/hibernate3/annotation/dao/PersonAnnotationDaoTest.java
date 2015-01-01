@@ -49,131 +49,131 @@ import com.panopset.poc.spring.hib.ContextHsqldb;
 @TestExecutionListeners(listeners = { DependencyInjectionTestExecutionListener.class })
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = ContextHsqldb.class)
 public class PersonAnnotationDaoTest extends
-		AbstractTransactionalJUnit4SpringContextTests {
+        AbstractTransactionalJUnit4SpringContextTests {
 
-	@Autowired
-	protected PersonDao personDao = null;
+    @Autowired
+    protected PersonDao personDao = null;
 
-	/**
-	 * Extended AbstractTransactionalJUnit4SpringContextTests in order to have
-	 * access to executeSqlScript. <a href=
-	 * "http://stackoverflow.com/questions/9673815/executing-sql-script-using-spring-test-is-committing-changes"
-	 * >Reference.</a>
-	 * 
-	 * @throws SQLException
-	 */
-	@Before
-	public void init() throws SQLException {
-		executeSqlScript("schema.sql", false);
-	}
+    /**
+     * Extended AbstractTransactionalJUnit4SpringContextTests in order to have
+     * access to executeSqlScript. <a href=
+     * "http://stackoverflow.com/questions/9673815/executing-sql-script-using-spring-test-is-committing-changes"
+     * >Reference.</a>
+     * 
+     * @throws SQLException
+     */
+    @Before
+    public void init() throws SQLException {
+        executeSqlScript("schema.sql", false);
+    }
 
-	final Logger logger = LoggerFactory
-			.getLogger(PersonAnnotationDaoTest.class);
+    final Logger logger = LoggerFactory
+            .getLogger(PersonAnnotationDaoTest.class);
 
-	@Test
-	public void testHibernateTemplate() throws SQLException {
-		assertNotNull("Person DAO is null.", personDao);
+    @Test
+    public void testHibernateTemplate() throws SQLException {
+        assertNotNull("Person DAO is null.", personDao);
 
-		Collection<Person> lPersons = personDao.findPersons();
+        Collection<Person> lPersons = personDao.findPersons();
 
-		int expected = 2;
+        int expected = 2;
 
-		assertNotNull("Person list is null.", lPersons);
-		assertEquals("Number of persons should be " + expected + ".", expected,
-				lPersons.size());
+        assertNotNull("Person list is null.", lPersons);
+        assertEquals("Number of persons should be " + expected + ".", expected,
+                lPersons.size());
 
-		Integer firstId = new Integer(1);
-		Integer secondId = new Integer(2);
+        Integer firstId = new Integer(1);
+        Integer secondId = new Integer(2);
 
-		for (Person person : lPersons) {
-			assertNotNull("Person is null.", person);
+        for (Person person : lPersons) {
+            assertNotNull("Person is null.", person);
 
-			if (firstId.equals(person.getId())) {
-				String firstName = "Joe";
-				String lastName = "Smith";
+            if (firstId.equals(person.getId())) {
+                String firstName = "Joe";
+                String lastName = "Smith";
 
-				int expectedAddresses = 1;
+                int expectedAddresses = 1;
 
-				assertEquals("Person first name should be " + firstName + ".",
-						firstName, person.getFirstName());
-				assertEquals("Person last name should be " + lastName + ".",
-						lastName, person.getLastName());
+                assertEquals("Person first name should be " + firstName + ".",
+                        firstName, person.getFirstName());
+                assertEquals("Person last name should be " + lastName + ".",
+                        lastName, person.getLastName());
 
-				assertNotNull("Person's address list is null.",
-						person.getAddresses());
-				assertEquals("Number of person's address list should be "
-						+ expectedAddresses + ".", expectedAddresses, person
-						.getAddresses().size());
+                assertNotNull("Person's address list is null.",
+                        person.getAddresses());
+                assertEquals("Number of person's address list should be "
+                        + expectedAddresses + ".", expectedAddresses, person
+                        .getAddresses().size());
 
-				Integer addressId = new Integer(1);
-				String addr = "1060 West Addison St.";
-				String city = "Chicago";
-				String state = "IL";
-				String zipPostal = "60613";
+                Integer addressId = new Integer(1);
+                String addr = "1060 West Addison St.";
+                String city = "Chicago";
+                String state = "IL";
+                String zipPostal = "60613";
 
-				for (Address address : person.getAddresses()) {
-					assertNotNull("Address is null.", address);
+                for (Address address : person.getAddresses()) {
+                    assertNotNull("Address is null.", address);
 
-					assertEquals("Address id should be '" + addressId + "'.",
-							addressId, address.getId());
-					assertEquals(
-							"Address address should be '" + address + "'.",
-							addr, address.getAddress());
+                    assertEquals("Address id should be '" + addressId + "'.",
+                            addressId, address.getId());
+                    assertEquals(
+                            "Address address should be '" + address + "'.",
+                            addr, address.getAddress());
 
-					assertEquals("Address city should be '" + city + "'.",
-							city, address.getCity());
-					assertEquals("Address state should be '" + state + "'.",
-							state, address.getState());
-					assertEquals("Address zip/postal should be '" + zipPostal
-							+ "'.", zipPostal, address.getZipPostal());
-				}
-			}
+                    assertEquals("Address city should be '" + city + "'.",
+                            city, address.getCity());
+                    assertEquals("Address state should be '" + state + "'.",
+                            state, address.getState());
+                    assertEquals("Address zip/postal should be '" + zipPostal
+                            + "'.", zipPostal, address.getZipPostal());
+                }
+            }
 
-			if (secondId.equals(person.getId())) {
-				String firstName = "John";
-				String lastName = "Wilson";
+            if (secondId.equals(person.getId())) {
+                String firstName = "John";
+                String lastName = "Wilson";
 
-				int expectedAddresses = 2;
+                int expectedAddresses = 2;
 
-				assertEquals("Person first name should be " + firstName + ".",
-						firstName, person.getFirstName());
-				assertEquals("Person last name should be " + lastName + ".",
-						lastName, person.getLastName());
+                assertEquals("Person first name should be " + firstName + ".",
+                        firstName, person.getFirstName());
+                assertEquals("Person last name should be " + lastName + ".",
+                        lastName, person.getLastName());
 
-				assertNotNull("Person's address list is null.",
-						person.getAddresses());
-				assertEquals("Number of person's address list should be "
-						+ expectedAddresses + ".", expectedAddresses, person
-						.getAddresses().size());
+                assertNotNull("Person's address list is null.",
+                        person.getAddresses());
+                assertEquals("Number of person's address list should be "
+                        + expectedAddresses + ".", expectedAddresses, person
+                        .getAddresses().size());
 
-				Integer addressId = new Integer(3);
-				String addr = "47 Howard St.";
-				String city = "San Francisco";
-				String state = "CA";
-				String zipPostal = "94103";
+                Integer addressId = new Integer(3);
+                String addr = "47 Howard St.";
+                String city = "San Francisco";
+                String state = "CA";
+                String zipPostal = "94103";
 
-				for (Address address : person.getAddresses()) {
-					assertNotNull("Address is null.", address);
+                for (Address address : person.getAddresses()) {
+                    assertNotNull("Address is null.", address);
 
-					if (addressId.equals(address.getId())) {
-						assertEquals("Address id should be '" + addressId
-								+ "'.", addressId, address.getId());
-						assertEquals("Address address should be '" + address
-								+ "'.", addr, address.getAddress());
+                    if (addressId.equals(address.getId())) {
+                        assertEquals("Address id should be '" + addressId
+                                + "'.", addressId, address.getId());
+                        assertEquals("Address address should be '" + address
+                                + "'.", addr, address.getAddress());
 
-						assertEquals("Address city should be '" + city + "'.",
-								city, address.getCity());
-						assertEquals(
-								"Address state should be '" + state + "'.",
-								state, address.getState());
-						assertEquals("Address zip/postal should be '"
-								+ zipPostal + "'.", zipPostal,
-								address.getZipPostal());
-					}
-				}
-			}
+                        assertEquals("Address city should be '" + city + "'.",
+                                city, address.getCity());
+                        assertEquals(
+                                "Address state should be '" + state + "'.",
+                                state, address.getState());
+                        assertEquals("Address zip/postal should be '"
+                                + zipPostal + "'.", zipPostal,
+                                address.getZipPostal());
+                    }
+                }
+            }
 
-			logger.debug(person.toString());
-		}
-	}
+            logger.debug(person.toString());
+        }
+    }
 }

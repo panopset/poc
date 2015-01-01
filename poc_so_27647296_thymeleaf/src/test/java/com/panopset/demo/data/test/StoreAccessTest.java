@@ -27,37 +27,37 @@ import com.panopset.demo.dao.StoreDAO;
 @TestExecutionListeners(listeners = { DependencyInjectionTestExecutionListener.class })
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = ContextHsqldb.class)
 public class StoreAccessTest extends
-		AbstractTransactionalJUnit4SpringContextTests {
+        AbstractTransactionalJUnit4SpringContextTests {
 
-	@Autowired
-	protected StoreDAO storeDAO;
+    @Autowired
+    protected StoreDAO storeDAO;
 
-	@Before
-	public void init() throws SQLException {
-		executeSqlScript("schema.sql", false);
-	}
+    @Before
+    public void init() throws SQLException {
+        executeSqlScript("schema.sql", false);
+    }
 
-	@Test
-	public void test() {
-		Store store = new Store();
-		store.setName("StoreA");
-		store.setType("Retail");
-		store.setAddress("100 Northpoint");
+    @Test
+    public void test() {
+        Store store = new Store();
+        store.setName("StoreA");
+        store.setType("Retail");
+        store.setAddress("100 Northpoint");
 
-		storeDAO.insertStore(store);
+        storeDAO.insertStore(store);
 
-		store = new Store();
-		store.setName("StoreB");
-		store.setType("Warehouse");
-		store.setAddress("90 Blue Ravine");
+        store = new Store();
+        store.setName("StoreB");
+        store.setType("Warehouse");
+        store.setAddress("90 Blue Ravine");
 
-		storeDAO.insertStore(store);
+        storeDAO.insertStore(store);
 
-		for (Store storeFromList : storeDAO.getAllStores()) {
-			System.out.println(storeFromList.toString());
-		}
-		store = storeDAO.getStore("StoreA");
+        for (Store storeFromList : storeDAO.getAllStores()) {
+            System.out.println(storeFromList.toString());
+        }
+        store = storeDAO.getStore("StoreA");
 
-		Assert.assertEquals("Retail", store.getType());
-	}
+        Assert.assertEquals("Retail", store.getType());
+    }
 }

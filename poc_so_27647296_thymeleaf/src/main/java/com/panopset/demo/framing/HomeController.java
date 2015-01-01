@@ -19,32 +19,32 @@ import com.panopset.demo.dao.StoreDAO;
 @RequestMapping("/")
 public class HomeController {
 
-	@Autowired
-	StoreDAO storeDAO;
+    @Autowired
+    StoreDAO storeDAO;
 
-	/**
-	 * Handle http request.
-	 *
-	 * @param model
-	 *            Model.
-	 * @param request
-	 *            Request.
-	 * @return index.
-	 */
-	@RequestMapping(method = RequestMethod.GET)
-	public String handleRequest(Model model, HttpServletRequest request) {
-		model.addAttribute("serverInfo", request.getSession()
-				.getServletContext().getServerInfo());
-		List<Store> stores = storeDAO.getAllStores();
-		if (logger.isDebugEnabled()) {
-			for (Store s : stores) {
-				logger.debug(s.toString());
-			}
-		}
-		model.addAttribute("storeList", stores);
-		return "index";
-	}
-	
-	private final Logger logger = LoggerFactory.getILoggerFactory()
-			.getLogger(this.getClass().getName());
+    /**
+     * Handle http request.
+     *
+     * @param model
+     *            Model.
+     * @param request
+     *            Request.
+     * @return index.
+     */
+    @RequestMapping(method = RequestMethod.GET)
+    public String handleRequest(Model model, HttpServletRequest request) {
+        model.addAttribute("serverInfo", request.getSession()
+                .getServletContext().getServerInfo());
+        List<Store> stores = storeDAO.getAllStores();
+        if (logger.isDebugEnabled()) {
+            for (Store s : stores) {
+                logger.debug(s.toString());
+            }
+        }
+        model.addAttribute("storeList", stores);
+        return "index";
+    }
+
+    private final Logger logger = LoggerFactory.getILoggerFactory().getLogger(
+            this.getClass().getName());
 }

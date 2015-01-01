@@ -37,33 +37,33 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class PersonDaoImpl extends HibernateDaoSupport implements PersonDao {
 
-	/**
-	 * Find persons.
-	 */
-	@Override
-	@SuppressWarnings("unchecked")
-	public Collection<Person> findPersons() throws DataAccessException {
-		return (Collection<Person>) getHibernateTemplate().find("from Person");
-	}
+    /**
+     * Find persons.
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public Collection<Person> findPersons() throws DataAccessException {
+        return (Collection<Person>) getHibernateTemplate().find("from Person");
+    }
 
-	/**
-	 * Find persons by last name.
-	 */
-	@Override
-	@SuppressWarnings("unchecked")
-	public Collection<Person> findPersonsByLastName(String lastName)
-			throws DataAccessException {
-		return (Collection<Person>) getHibernateTemplate().find(
-				"from Person p where p.lastName = ?", lastName);
-	}
+    /**
+     * Find persons by last name.
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public Collection<Person> findPersonsByLastName(String lastName)
+            throws DataAccessException {
+        return (Collection<Person>) getHibernateTemplate().find(
+                "from Person p where p.lastName = ?", lastName);
+    }
 
-	/**
-	 * Saves person.
-	 */
-	@Override
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
-	public void save(Person person) {
-		getHibernateTemplate().saveOrUpdate(person);
-	}
+    /**
+     * Saves person.
+     */
+    @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
+    public void save(Person person) {
+        getHibernateTemplate().saveOrUpdate(person);
+    }
 
 }

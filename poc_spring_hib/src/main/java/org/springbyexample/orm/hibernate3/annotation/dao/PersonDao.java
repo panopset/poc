@@ -16,12 +16,10 @@
 
 package org.springbyexample.orm.hibernate3.annotation.dao;
 
-
 import java.util.Collection;
 
 import org.springbyexample.orm.hibernate3.annotation.bean.Person;
 import org.springframework.dao.DataAccessException;
-
 
 /**
  * Person DAO interface.
@@ -34,12 +32,12 @@ public interface PersonDao {
      * Find persons.
      */
     public Collection<Person> findPersons() throws DataAccessException;
-    
+
     /**
      * Find persons by last name.
      */
-    public Collection<Person> findPersonsByLastName(String lastName) throws DataAccessException;
-
+    public Collection<Person> findPersonsByLastName(String lastName)
+            throws DataAccessException;
 
     /**
      * Saves person.

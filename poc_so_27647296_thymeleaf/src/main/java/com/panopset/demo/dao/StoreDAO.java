@@ -6,12 +6,12 @@ import com.panopset.demo.bean.Store;
 
 public interface StoreDAO {
 
-	void insertStore(Store store);
+    void insertStore(Store store);
 
-	Store getStoreById(int storeId);
+    Store getStoreById(int storeId);
 
-	Store getStore(String storeName);
+    Store getStore(String storeName);
 
-	List<Store> getAllStores();
+    List<Store> getAllStores();
 
 }
